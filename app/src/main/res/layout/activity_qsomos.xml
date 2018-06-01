@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Utilizo el FrameLayout para colocar una imagen transparente de fondo
+y lo que esta adentro del LinearLayout que se muestre sobre la imagen con transparencia-->
+<FrameLayout
+    android:id="@+id/content_joven"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="cl.ubiobio.serviciodesaludbio_bio.MainJovenActivity"
+    tools:showIn="@layout/app_bar_joven">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/hospital"
+        android:alpha="0.2"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quienes Somos"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="#000"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Visión"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#000"/>
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="15dp"
+            android:textColor="#000"
+            android:text="“Ser una red de salud integral, resolutiva, accesible y humanizada que genere confianza y cercanía a las personas, la familia y la comunidad, para el logro de una población saludable”."
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Misión"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#000"/>
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="15dp"
+            android:textColor="#000"
+            android:text="“Contribuimos al cumplimiento de los Objetivos Sanitarios (equidad, calidad, satisfacción usuaria, logros sanitarios), integrando y coordinando la red de salud Biobío, con énfasis en una atención resolutiva, de calidad y calidez; centrada en el respeto a las personas, bajo un enfoque participativo, inclusivo y con pertinencia cultural”"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Valores Institucionales"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#000"/>
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="15dp"
+            android:textColor="#000"
+            android:text="- Respeto\n- Responsabilidad\n- Equidad\n- Compromiso\n- Honestidad"
+            />
+
+    </LinearLayout>
+
+
+</FrameLayout>

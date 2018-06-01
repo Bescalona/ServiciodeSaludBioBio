@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_visita"
+            android:icon="@drawable/svg_hora_visita"
+            android:title="Horario de visita" />
+        <item
+            android:id="@+id/nav_consulta"
+            android:icon="@drawable/svg_consulta_hora"
+            android:title="Consulta hora médica" />
+        <item
+            android:id="@+id/nav_paciente"
+            android:icon="@drawable/svg_paciente"
+            android:title="Consulta estado del paciente" />
+        <item
+            android:id="@+id/nav_donacion"
+            android:icon="@drawable/svg_donacion_de_sangre"
+            android:title="Dona sangre" />
+        <item
+            android:id="@+id/nav_farmacia"
+            android:icon="@drawable/svg_farmacia"
+            android:title="Farmacia de turno" />
+        <item
+            android:id="@+id/nav_servicio"
+            android:icon="@drawable/svg_servicios"
+            android:title="Cartera de servicio" />
+        <item
+            android:id="@+id/nav_llame"
+            android:icon="@drawable/svg_telefono"
+            android:title="Salud responde" />
+        <item
+            android:id="@+id/nav_cambiar_a_mayor"
+            android:icon="@drawable/svg_cambiar"
+            android:title="Cambiar a Modo Mayor" />
+    </group>
+
+     <!--   <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>-->
+
+</menu>
