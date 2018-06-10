@@ -14,8 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".15"
-        android:scaleType="centerCrop"
-        android:src="@drawable/img_llamada"
+        android:scaleType="centerInside"
+        android:src="@drawable/sresponde"
 
         />
     <LinearLayout
@@ -24,6 +24,16 @@
         android:orientation="vertical"
         android:layout_weight=".85">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/botonLlamar"
+            android:text="LLAMAR"
+            android:background="@color/GreenYellow"
+            android:layout_gravity="center"/>
+
     </LinearLayout>
+
+
 
 </LinearLayout>
