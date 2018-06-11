@@ -2,13 +2,18 @@ package cl.ubiobio.serviciodesaludbio_bio;
 
 /*Fragment asociado al layout activity_salud_responde, su funcion es ser llamado en el MainJovenActivity para luego mostrar su layout en la pantalla
   principal del modo joven (content_joven)*/
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -19,7 +24,10 @@ import android.widget.TextView;
  * Use the {@link SaludRespondeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SaludRespondeFragment extends Fragment {
+public class SaludRespondeFragment extends Fragment implements View.OnClickListener {
+    private Button sin_saldo;
+    Button llamada;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -66,7 +74,15 @@ public class SaludRespondeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_salud_responde, container, false);
+        View view =inflater.inflate(R.layout.activity_salud_responde, container, false);
+        //inicializo el boton llamada y le asigno la id del boton llamar del activity_salud_responde.xml
+        llamada = view.findViewById(R.id.botonLlamar);
+        //inicializo el boton sin_saldo, ocupado para dirigirme al layout con el webview
+        sin_saldo = view.findViewById(R.id.sin_saldo);
+        //le asigno una accion al presionar el boton
+        sin_saldo.setOnClickListener(this);
+        llamada.setOnClickListener(this);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -91,6 +107,25 @@ public class SaludRespondeFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.botonLlamar:
+                //si presiono el boton marco automaticamente el numero de salud responde en el telefono
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("tel:600-360-77777"));
+                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED){
+                    return;
+                }
+                startActivity(intent);
+                break;
+            case R.id.sin_saldo:
+                Intent sin_saldo = new Intent(getContext(), SinSaldoActivity.class);
+                startActivity(sin_saldo);
+                break;
+        }
     }
 
     /**

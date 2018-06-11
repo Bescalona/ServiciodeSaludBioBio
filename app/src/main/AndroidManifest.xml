@@ -3,8 +3,7 @@
     package="cl.ubiobio.serviciodesaludbio_bio">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -16,46 +15,31 @@
 
         <!-- android:label="@string/app_name" -->
         <activity
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:name=".SplashActivity">
+            android:name=".SplashActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:theme="@style/AppTheme.NoActionBar"
-            android:name=".MainMayorActivity" />
-
+            android:name=".MainMayorActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainJovenActivity"
             android:theme="@style/AppTheme.NoActionBar">
 
             <!-- android:label="@string/title_activity_joven" -->
         </activity>
-
-        <activity
-            android:name=".HVisitaActivity" />
-
-        <activity
-            android:name=".CHoraActivity" />
-
-        <activity
-            android:name=".DSangreActivity" />
-
-        <activity
-            android:name=".CEstadoActivity" />
-
-        <activity
-            android:name=".CServiciosActivity" />
-
-        <activity
-            android:name=".FarmaciaActivity" />
-
-        <activity
-            android:name=".SaludRespondeActivity"></activity>
+        <activity android:name=".HVisitaActivity" />
+        <activity android:name=".CHoraActivity" />
+        <activity android:name=".DSangreActivity" />
+        <activity android:name=".CEstadoActivity" />
+        <activity android:name=".CServiciosActivity" />
+        <activity android:name=".FarmaciaActivity" />
+        <activity android:name=".SaludRespondeActivity" />
+        <activity android:name=".SinSaldoActivity"></activity>
     </application>
 
 </manifest>

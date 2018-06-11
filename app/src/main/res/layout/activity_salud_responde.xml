@@ -7,32 +7,41 @@
     android:orientation="vertical"
     tools:context="cl.ubiobio.serviciodesaludbio_bio.SaludRespondeActivity">
 
-    <!-- ImageView contiene un banner con imagen, ocupa el 15% de la pantalla-->
-    <!-- LinearLayout contendra el futuro cuerpo de la seccion, ocupa el 80% de la pantalla-->
+       <!-- ImageView contiene un banner con imagen, ocupa el 15% de la pantalla-->
+       <!-- LinearLayout contendra el futuro cuerpo de la seccion, ocupa el 80% de la pantalla-->
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".15"
-        android:scaleType="centerInside"
-        android:src="@drawable/sresponde"
+         android:layout_width="match_parent"
+         android:layout_height="0dp"
+         android:layout_weight=".15"
+         android:scaleType="centerInside"
+         android:src="@drawable/sresponde"
 
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_weight=".85">
+         />
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="0dp"
+         android:orientation="vertical"
+         android:layout_weight=".85">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/botonLlamar"
-            android:text="LLAMAR"
-            android:background="@color/GreenYellow"
-            android:layout_gravity="center"/>
+         <Button
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:id="@+id/botonLlamar"
+             android:text="LLAMAR"
+             android:background="@color/GreenYellow"
+             android:layout_gravity="center"/>
 
-    </LinearLayout>
+         <Button
+             android:id="@+id/sin_saldo"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:background="@drawable/sin_saldo"
+             android:layout_marginTop="50dp"/>
+
+     </LinearLayout>
+
 
 
 
