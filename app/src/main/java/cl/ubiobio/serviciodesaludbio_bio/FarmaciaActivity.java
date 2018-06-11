@@ -2,7 +2,10 @@ package cl.ubiobio.serviciodesaludbio_bio;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -33,6 +36,24 @@ public class FarmaciaActivity extends AppCompatActivity {
         //cambio el titulo del ActionBar por uno correspondiente a la clase
         getSupportActionBar().setTitle("Farmacias de turno");
 
+        //inicializo el editText donde ingresare texto para filtar por ciudad
+        EditText editText = findViewById(R.id.edittext);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
         //inicializo mi arreglo con objetos item
         farmacias = new ArrayList<>();
         //inicializo mi lista ubicada en activity_farmacia.xml
@@ -41,6 +62,18 @@ public class FarmaciaActivity extends AppCompatActivity {
         //invoco al metodo getFarmacias el cual busca las farmacias de turno y llena la lista con info de ellas
         getFarmacias();
 
+    }
+
+    //funcion que filtra los elementos  del arreglo de farmacia que se muestran en el listview
+    private void filter(String text){
+        ArrayList<Item> filteredList = new ArrayList<>();
+        for(Item dat: farmacias){
+            //filtro por ciudad
+            if(dat.getCiudad().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(dat);
+            }
+        }
+        adaptador.filterList(filteredList);
     }
 
     //Si existe un erro en el web service despliego el siguiente mensaje

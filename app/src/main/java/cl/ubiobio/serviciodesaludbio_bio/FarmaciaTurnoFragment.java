@@ -6,10 +6,13 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -83,6 +86,7 @@ public class FarmaciaTurnoFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
         //inicializo mi arreglo con objetos item
         farmacias = new ArrayList<>();
         farmacias.clear();
@@ -95,9 +99,40 @@ public class FarmaciaTurnoFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view =inflater.inflate(R.layout.activity_farmacia, container, false);
+
+        //inicializo el editText donde ingresare texto para filtar por ciudad
+        EditText editText = view.findViewById(R.id.edittext);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
         lvlItems = view.findViewById(R.id.lvlItems);
         // Inflate the layout for this fragment
         return view;
+    }
+
+    //funcion que filtra los elementos  del arreglo de farmacia que se muestran en el listview
+    private void filter(String text){
+        ArrayList<Item> filteredList = new ArrayList<>();
+        for(Item dat: farmacias){
+            //filtro por ciudad
+            if(dat.getCiudad().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(dat);
+            }
+        }
+        adaptador.filterList(filteredList);
     }
 
     //Si existe un erro en el web service despliego el siguiente mensaje

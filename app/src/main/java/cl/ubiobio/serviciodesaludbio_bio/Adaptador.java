@@ -59,4 +59,10 @@ public class Adaptador extends BaseAdapter {
         horario.setText(fturno.getHorario());
         return convertView;
     }
+
+    //filtra los objetos del listView segun la variable indicada en FarmaciaActivity (en este caso filtro por ciudad)
+    public void filterList(ArrayList<Item> filteredList){
+        listItems = filteredList;
+        notifyDataSetChanged();
+    }
 }
