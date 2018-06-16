@@ -39,7 +39,7 @@
         <activity android:name=".CServiciosActivity" />
         <activity android:name=".FarmaciaActivity" />
         <activity android:name=".SaludRespondeActivity" />
-        <activity android:name=".SinSaldoActivity"></activity>
+        <activity android:name=".SinSaldoActivity" />
     </application>
 
 </manifest>

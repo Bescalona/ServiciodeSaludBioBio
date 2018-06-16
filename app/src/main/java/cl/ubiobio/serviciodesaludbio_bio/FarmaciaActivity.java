@@ -76,7 +76,7 @@ public class FarmaciaActivity extends AppCompatActivity {
         adaptador.filterList(filteredList);
     }
 
-    //Si existe un erro en el web service despliego el siguiente mensaje
+    //Si existe un error en el web service despliego el siguiente mensaje
     private void generateToast(String msg){
         Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_SHORT).show();
     }
