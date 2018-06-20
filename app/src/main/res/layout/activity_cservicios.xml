@@ -10,20 +10,65 @@
     <!-- ImageView contiene un banner con imagen, ocupa el 15% de la pantalla-->
     <!-- LinearLayout contendra el futuro cuerpo de la seccion, ocupa el 85% de la pantalla-->
 
-    <ImageView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".15"
-        android:scaleType="centerCrop"
-        android:src="@drawable/img_servicios"
+        android:text="\nCartera de Servicios"
+        android:typeface="serif"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        android:scaleType="fitCenter"
+        android:background="@drawable/img_servicios"/>
 
-        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:layout_weight=".85">
+        android:layout_weight=".7">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight=".92"
+            android:text="* Cardiología\n* Cuidados Paliativos
+* Diálisis
+* Farmacia clínica
+* Imagenología
+* Laboratorio Clínico
+* Maternidad
+* Nefrología
+* Neurocirugía
+* Neurología
+* Odontología
+* Oftalmología
+* Oncología
+* P.R.A.I.S
+* Psiquiatría
+* Rehabilitación
+* Traumatología"
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="#0167B1"
+            android:textSize="18dp"/>
 
     </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".02"
+        android:src="@drawable/footer_min"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".08"
+        android:text="Para más información: \nhttp://www.hospitallosangeles.cl"
+        android:textAlignment="center"
+        android:textColor="#FF2E39"
+        android:textSize="15dp"/>
 </LinearLayout>
