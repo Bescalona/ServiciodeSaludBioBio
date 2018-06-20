@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -25,6 +27,7 @@ import java.util.ArrayList;
 public class FarmaciaActivity extends AppCompatActivity {
 
     private ListView lvlItems;
+    private ProgressBar progressBarFarmacia;
     private Adaptador adaptador;
     //Array donde almaceno objetos de la clase item que contiene datos de las farmacias que mostrare en el layout
     ArrayList<Item> farmacias;
@@ -54,6 +57,8 @@ public class FarmaciaActivity extends AppCompatActivity {
                 filter(s.toString());
             }
         });
+        //inicializo el efecto de carga
+        progressBarFarmacia = findViewById(R.id.progressBarFarmacia);
         //inicializo mi arreglo con objetos item
         farmacias = new ArrayList<>();
         //inicializo mi lista ubicada en activity_farmacia.xml
@@ -133,6 +138,7 @@ public class FarmaciaActivity extends AppCompatActivity {
 
                             }
                             adaptador = new Adaptador(getApplicationContext(),farmacias);
+                            progressBarFarmacia.setVisibility(View.INVISIBLE);
                             lvlItems.setAdapter(adaptador);
 
                         } catch (JSONException e) {

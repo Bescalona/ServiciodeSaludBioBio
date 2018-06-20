@@ -40,11 +40,14 @@ public class CHoraActivity extends AppCompatActivity implements View.OnClickList
 
     private Button brut;
     private EditText rutform;
-    String validaRut;
+    String rutFormateado;
+    String antesGuion;
+    String despuesGuion;
+    int antesGuionInt;
 
 
     private TextView sinHora;
-    private EditText rut;
+    //private EditText rut;
 
     private static final String ns = null;
 
@@ -61,7 +64,7 @@ public class CHoraActivity extends AppCompatActivity implements View.OnClickList
 
     private ListView listaHoras;
     private AdaptadorHora adaptador;
-    //Array donde almaceno objetos de la clase item que contiene datos de las farmacias que mostrare en el layout
+    //Array donde almaceno objetos de la clase ResponseXML que contiene datos de las horas medicas que mostrare en el layout
     ArrayList<ResponseXML> horas;
 
     @Override
@@ -75,6 +78,7 @@ public class CHoraActivity extends AppCompatActivity implements View.OnClickList
         brut.setOnClickListener(this);
 
         sinHora= findViewById(R.id.sinhora);
+        sinHora.setText("");
         //inicializo mi arreglo con objetos item
         horas = new ArrayList<>();
         //inicializo mi lista ubicada en activity_farmacia.xml
@@ -109,16 +113,16 @@ public class CHoraActivity extends AppCompatActivity implements View.OnClickList
         return validacion;
     }
 
-    //Si existe un error en el web service despliego el siguiente mensaje
+    //funcion que despliega un mensaje (toast)
     private void generateToast(String msg){
         Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_SHORT).show();
     }
 
-    //metodo que consulta a una API las farmacias de turno y las despliega en el ListView de activity_farmacia.xml
-    private void getHoras(){
+    //metodo que consulta a una API las horas medicas de un rut que pasamos por parametro y las despliega en el ListView de activity_chora.xml
+    private void getHoras(int antesGuionInt, String despuesGuion){
 
         String WS_URL = "http://10.8.117.115/ws/SAC/Servicios_Usuarios/server.php";
-        final String requestBody = getXMLBody(18821266, "2");
+        final String requestBody = getXMLBody(antesGuionInt, despuesGuion);
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -141,11 +145,15 @@ public class CHoraActivity extends AppCompatActivity implements View.OnClickList
                                 parser.nextTag();
                             }
                             List<ResponseXML> lista = leerHoras(parser);
+                            //si el tamaño de lista es 1, significa que no pudo entregarme info de horas medicas o que solo tiene una unica hora medica
                             if(lista.size() == 1){
-                                if(!lista.get(0).getCodigo().equals(1)){
+                                //si lista.get(0).getCodigo() es diferente de 1 significa que no pudo entregar info de horas medicas, por lo tanto despliego un mensaje con la descripcion del error
+                                if(!lista.get(0).getCodigo().equals("1")){
                                     Log.e("ERROR", "DESCRIPCION: " + lista.get(0).getDescripcion_codigo());
+                                    Log.e("ERROR", "CODIGO: " + lista.get(0).getCodigo());
                                     sinHora.setText(lista.get(0).getDescripcion_codigo());
                                 }else{
+                                    //en el caso que lista.get(0).getCodigo() sea 1, significa que exite una unica hora medica, almaceno los valores en el objeto respuesta y luego le paso objeto a la lista horas
                                     respuesta.setCodigo(lista.get(0).getCodigo());
                                     respuesta.setDescripcion_codigo(lista.get(0).getDescripcion_codigo());
                                     respuesta.setFecha_asignada(lista.get(0).getFecha_asignada());
@@ -156,16 +164,17 @@ public class CHoraActivity extends AppCompatActivity implements View.OnClickList
                                     respuesta.setUbicacion(lista.get(0).getUbicacion());
                                     horas.add(respuesta);
                                 }
+                            //en el caso de que la lista se mayor a 1 significa que el rut ingresado tiene mas de 1 hora medica, en ese caso almaceno todas las horas medicas en horas
                             }else{
                                 for (int i=0;i<lista.size();i++){
-                                    respuesta.setCodigo(lista.get(0).getCodigo());
-                                    respuesta.setDescripcion_codigo(lista.get(0).getDescripcion_codigo());
-                                    respuesta.setFecha_asignada(lista.get(0).getFecha_asignada());
-                                    respuesta.setPaciente(lista.get(0).getPaciente());
-                                    respuesta.setPoliclinico(lista.get(0).getPoliclinico());
-                                    respuesta.setProfesional(lista.get(0).getProfesional());
-                                    respuesta.setTipo_hora(lista.get(0).getTipo_hora());
-                                    respuesta.setUbicacion(lista.get(0).getUbicacion());
+                                    respuesta.setCodigo(lista.get(i).getCodigo());
+                                    respuesta.setDescripcion_codigo(lista.get(i).getDescripcion_codigo());
+                                    respuesta.setFecha_asignada(lista.get(i).getFecha_asignada());
+                                    respuesta.setPaciente(lista.get(i).getPaciente());
+                                    respuesta.setPoliclinico(lista.get(i).getPoliclinico());
+                                    respuesta.setProfesional(lista.get(i).getProfesional());
+                                    respuesta.setTipo_hora(lista.get(i).getTipo_hora());
+                                    respuesta.setUbicacion(lista.get(i).getUbicacion());
                                     horas.add(respuesta);
                                 }
                             }
@@ -383,12 +392,22 @@ public class CHoraActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.brut:
+                //limpio la pantalla de horas medicas mostradas anteriormente
+                horas.clear();
                 //obtengo el rut desde el EditText del layout activity_chora.xml
                 rutform = findViewById(R.id.rut);
-                validaRut = rutform.getText().toString();
-                if(validarRut(validaRut)) {
-                    //invoco al metodo getFarmacias el cual busca las farmacias de turno y llena la lista con info de ellas
-                    getHoras();
+                sinHora.setText("");
+                //le paso el rut a la funcion validarRut que verifica que sea correcto
+                if(validarRut(rutform.getText().toString())) {
+                    //en el caso que devuelva true, le quito el guion al rut y lo separo entre la parte antes del guion y la despues del guion
+                    rutFormateado = rutform.getText().toString().replace("-","");
+                    antesGuion =rutFormateado.substring(0,rutFormateado.length()-1);
+                    //transformo la parte antes del guion a int
+                    antesGuionInt=Integer.parseInt(antesGuion);
+                    despuesGuion= rutFormateado.substring(rutFormateado.length()-1,rutFormateado.length()).toUpperCase();
+
+                    //invoco al metodo getHoras el cual busca las horas medicas dado un rut que paso por parametro y llena la lista con info de las horas
+                    getHoras(antesGuionInt,despuesGuion);
                 }else{
                     rutform.setError("El rut ingresado es invalido");
                 }

@@ -39,10 +39,10 @@ public class AdaptadorHora extends BaseAdapter {
         return 0;
     }
 
-    //en este metodo creamos cada item de farmacias de turno y le asiggnamos los elementos
+    //en este metodo creamos cada item de consulta hora medica y le asiggnamos los elementos
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ResponseXML fturno = (ResponseXML) getItem(position);
+        ResponseXML hmed = (ResponseXML) getItem(position);
 
         convertView = LayoutInflater.from(context).inflate(R.layout.hora,null);
         TextView paciente = (TextView) convertView.findViewById(R.id.paciente);
@@ -50,20 +50,12 @@ public class AdaptadorHora extends BaseAdapter {
         TextView profesional = (TextView) convertView.findViewById(R.id.profesional);
         TextView policlinico = (TextView) convertView.findViewById(R.id.policlinico);
         TextView ubicacion = (TextView) convertView.findViewById(R.id.ubicacion);
-        TextView tipo_hora = (TextView) convertView.findViewById(R.id.tipo_hora);
 
-        paciente.setText(fturno.getPaciente());
-        fecha_asignada.setText(fturno.getFecha_asignada());
-        profesional.setText(fturno.getProfesional());
-        policlinico.setText(fturno.getPoliclinico());
-        ubicacion.setText(fturno.getUbicacion());
-        tipo_hora.setText(fturno.getTipo_hora());
+        paciente.setText(hmed.getPaciente());
+        fecha_asignada.setText(hmed.getFecha_asignada());
+        profesional.setText(hmed.getProfesional());
+        policlinico.setText(hmed.getPoliclinico());
+        ubicacion.setText(hmed.getUbicacion());
         return convertView;
-    }
-
-    //filtra los objetos del listView segun la variable indicada en FarmaciaActivity (en este caso filtro por ciudad)
-    public void filterList(ArrayList<ResponseXML> filteredList){
-        listaHoras = filteredList;
-        notifyDataSetChanged();
     }
 }

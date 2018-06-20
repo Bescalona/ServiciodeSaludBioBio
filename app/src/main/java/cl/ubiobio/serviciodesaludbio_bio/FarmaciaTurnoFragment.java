@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,7 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class FarmaciaTurnoFragment extends Fragment {
+    private ProgressBar progressBarFarmacia;
     private ListView lvlItems;
     private Adaptador adaptador;
     //Array donde almaceno objetos de la clase item que contiene datos de las farmacias que mostrare en el layout
@@ -99,6 +101,9 @@ public class FarmaciaTurnoFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view =inflater.inflate(R.layout.activity_farmacia, container, false);
+
+        //inicializo el efecto de carga
+        progressBarFarmacia = view.findViewById(R.id.progressBarFarmacia);
 
         //inicializo el editText donde ingresare texto para filtar por ciudad
         EditText editText = view.findViewById(R.id.edittext);
@@ -191,6 +196,7 @@ public class FarmaciaTurnoFragment extends Fragment {
 
                             }
                             adaptador = new Adaptador(getContext(),farmacias);
+                            progressBarFarmacia.setVisibility(View.INVISIBLE);
                             lvlItems.setAdapter(adaptador);
 
                         } catch (JSONException e) {
