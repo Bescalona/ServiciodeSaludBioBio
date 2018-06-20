@@ -1,11 +1,14 @@
 package cl.ubiobio.serviciodesaludbio_bio;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -41,6 +44,7 @@ public class FarmaciaActivity extends AppCompatActivity {
 
         //inicializo el editText donde ingresare texto para filtar por ciudad
         EditText editText = findViewById(R.id.edittext);
+
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -57,6 +61,7 @@ public class FarmaciaActivity extends AppCompatActivity {
                 filter(s.toString());
             }
         });
+
         //inicializo el efecto de carga
         progressBarFarmacia = findViewById(R.id.progressBarFarmacia);
         //inicializo mi arreglo con objetos item
@@ -66,6 +71,7 @@ public class FarmaciaActivity extends AppCompatActivity {
         farmacias.clear();
         //invoco al metodo getFarmacias el cual busca las farmacias de turno y llena la lista con info de ellas
         getFarmacias();
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
     }
 

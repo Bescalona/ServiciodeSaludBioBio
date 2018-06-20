@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Xml;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -83,7 +84,7 @@ public class CHoraActivity extends AppCompatActivity implements View.OnClickList
         horas = new ArrayList<>();
         //inicializo mi lista ubicada en activity_farmacia.xml
         listaHoras = findViewById(R.id.listaHoras);
-        horas.clear();
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
     }
 
@@ -396,6 +397,7 @@ public class CHoraActivity extends AppCompatActivity implements View.OnClickList
                 horas.clear();
                 //obtengo el rut desde el EditText del layout activity_chora.xml
                 rutform = findViewById(R.id.rut);
+
                 sinHora.setText("");
                 //le paso el rut a la funcion validarRut que verifica que sea correcto
                 if(validarRut(rutform.getText().toString())) {
