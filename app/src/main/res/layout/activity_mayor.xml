@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/Medicine"
+    android:background="#0167B1"
     tools:context="cl.ubiobio.serviciodesaludbio_bio.MainMayorActivity">
 
     <!--Creamos 4 LinearLayout con el mismo peso(1) para que ocupen el mismo alto de la pantalla

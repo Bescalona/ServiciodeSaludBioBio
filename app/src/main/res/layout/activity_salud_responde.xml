@@ -22,15 +22,26 @@
          android:layout_width="match_parent"
          android:layout_height="0dp"
          android:orientation="vertical"
-         android:layout_weight=".85">
+         android:layout_weight=".75">
 
          <Button
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:id="@+id/botonLlamar"
              android:text="LLAMAR"
-             android:background="@color/GreenYellow"
+             android:textColor="#FFFFFF"
+             android:background="#0167B1"
              android:layout_gravity="center"/>
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:textAlignment="center"
+             android:text="* Con esta opción puedes marcar automáticamente al Servicio de Salud Bío Bío"
+             android:textColor="#FF2E39"
+             android:layout_marginLeft="25dp"
+             android:layout_marginRight="25dp"
+             android:typeface="serif"
+             android:textStyle="italic"/>
 
          <Button
              android:id="@+id/sin_saldo"
@@ -39,10 +50,25 @@
              android:layout_gravity="center"
              android:background="@drawable/sin_saldo"
              android:layout_marginTop="50dp"/>
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:textAlignment="center"
+             android:text="* Si no dispones de saldo para efectuar la llamada, puedes ingresar tus datos en el enlace anterior y recibir la llamada."
+             android:textColor="#FF2E39"
+             android:layout_marginLeft="25dp"
+             android:layout_marginRight="25dp"
+             android:typeface="serif"
+             android:textStyle="italic"/>
 
      </LinearLayout>
 
-
-
-
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/footer_min"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight=".1"/>
 </LinearLayout>

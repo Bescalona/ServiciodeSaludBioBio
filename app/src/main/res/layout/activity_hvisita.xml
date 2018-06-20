@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="cl.ubiobio.serviciodesaludbio_bio.HVisitaActivity">
+    tools:context="cl.ubiobio.serviciodesaludbio_bio.HVisitaActivity"
+    >
 
     <!-- ImageView contiene un banner con imagen, ocupa el 15% de la pantalla-->
     <!-- LinearLayout contendra el futuro cuerpo de la seccion, ocupa el 85% de la pantalla-->
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="239dp"
         android:layout_weight=".15"
         android:scaleType="centerCrop"
-        android:src="@drawable/img_clock"
+        android:src="@drawable/horario_visita"
 
         />
     <LinearLayout
@@ -24,7 +26,39 @@
         android:orientation="vertical"
         android:layout_weight=".85">
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/horario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lunes a Viernes de 08:00 a 17:00 hrs."
+            android:textAlignment="center"
+            android:textColor="#0167B1"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/horario2"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:text="Av. Ricardo Vicuña #371"
+            android:textAlignment="center"
+            android:textColor="#0167B1"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/footer_min" />
+    <TextView
+        android:id="@+id/horario3"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:text="Para más consultas llamar al 600 360 7777"
+        android:textAlignment="center"
+        android:textColor="#FF2E39"
+        android:textSize="17dp"
+        android:textStyle="bold" />
 
 </LinearLayout>

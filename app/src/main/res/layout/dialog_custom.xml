@@ -10,13 +10,13 @@
         android:orientation="horizontal"
         android:layout_height="50dp"
         android:weightSum="100"
-        android:background="#e1fc4c50">
+        android:background="#FF2E39">
 
         <ImageView
             android:layout_width="45dp"
             android:src="@drawable/logo"
             android:layout_weight="20"
-            android:background="#e1fc4c50"
+            android:background="#FF2E39"
             android:layout_height="match_parent"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"/>
@@ -45,7 +45,7 @@
             android:textSize="20sp"
             android:textAlignment="center"
             android:padding="10dp"
-            android:background="#b46371ff"
+            android:background="#0167B1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -54,11 +54,11 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:weightSum="100"
-        android:background="#b46371ff">
+        android:background="#0167B1">
         <Button
             android:id="@+id/btn_neg"
             android:layout_weight="50"
-            android:textColor="#b46371ff"
+            android:textColor="#0167B1"
             android:background="#dbffffff"
 
             android:textStyle="bold"
@@ -67,7 +67,7 @@
             android:layout_height="match_parent" />
         <Button
             android:id="@+id/btn_pos"
-            android:textColor="#b46371ff"
+            android:textColor="#0167B1"
             android:background="#dbffffff"
 
             android:textStyle="bold"
