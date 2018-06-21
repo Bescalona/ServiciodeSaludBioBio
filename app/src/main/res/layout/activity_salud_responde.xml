@@ -54,7 +54,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:textAlignment="center"
-             android:text="* Si no dispones de saldo para efectuar la llamada, puedes ingresar tus datos en el enlace anterior y recibir la llamada."
+             android:text="* Si no dispones de saldo para efectuar la llamada, puedes presionar la imagen anterior e ingresar tus datos para recibir la llamada."
              android:textColor="#FF2E39"
              android:layout_marginLeft="25dp"
              android:layout_marginRight="25dp"

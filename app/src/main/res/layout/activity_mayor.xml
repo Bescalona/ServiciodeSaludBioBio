@@ -103,7 +103,7 @@
             android:layout_height="match_parent"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@drawable/salud_responde"/>
+            android:background="@drawable/salud_responde2"/>
 
         <!--Creamos un LinearLayout adicional para poner un fondo blanco al vector cambiar_modo-->
         <LinearLayout

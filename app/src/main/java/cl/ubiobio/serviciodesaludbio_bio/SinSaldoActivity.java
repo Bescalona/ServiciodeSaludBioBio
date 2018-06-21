@@ -10,6 +10,7 @@ public class SinSaldoActivity extends AppCompatActivity {
 
     String url ="http://eccnetserver.entelcallcenter.cl/minsalc2c/index.aspx";
 
+    //en el onCreate se redirecciona a la pagina indicada en el url, mostrandola a traves de un webview
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
