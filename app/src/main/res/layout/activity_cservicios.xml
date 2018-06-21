@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".15"
-        android:text="\nCartera de Servicios"
         android:typeface="serif"
         android:textAlignment="center"
         android:textStyle="bold"
@@ -35,22 +34,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_weight=".92"
-            android:text="* Cardiología\n* Cuidados Paliativos
-* Diálisis
-* Farmacia clínica
-* Imagenología
-* Laboratorio Clínico
-* Maternidad
-* Nefrología
-* Neurocirugía
-* Neurología
-* Odontología
-* Oftalmología
-* Oncología
-* P.R.A.I.S
-* Psiquiatría
-* Rehabilitación
-* Traumatología"
+            android:text="* Cardiología\n* Cuidados Paliativos\n* Diálisis\n* Farmacia clínica\n* Imagenología\n* Laboratorio Clínico\n* Maternidad\n* Nefrología\n* Neurocirugía\n* Neurología\n* Odontología\n* Oftalmología\n* Oncología\n* P.R.A.I.S\n* Psiquiatría\n* Rehabilitación\n* Traumatología"
             android:typeface="serif"
             android:textStyle="bold"
             android:textColor="#0167B1"
