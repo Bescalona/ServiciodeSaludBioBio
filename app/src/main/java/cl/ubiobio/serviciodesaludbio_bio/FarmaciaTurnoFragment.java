@@ -3,6 +3,7 @@ package cl.ubiobio.serviciodesaludbio_bio;
 /*Fragment asociado al layout activity_farmacia, su funcion es ser llamado en el MainJovenActivity para luego mostrar su layout en la pantalla
   principal del modo joven (content_joven)*/
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -39,9 +41,10 @@ import java.util.ArrayList;
  * Use the {@link FarmaciaTurnoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FarmaciaTurnoFragment extends Fragment {
+public class FarmaciaTurnoFragment extends Fragment implements View.OnClickListener {
+    private Button farmacia_cercana;
     private ProgressBar progressBarFarmacia;
-    private ListView lvlItems;
+    private ListView fragment_lvlItems;
     private Adaptador adaptador;
     //Array donde almaceno objetos de la clase item que contiene datos de las farmacias que mostrare en el layout
     ArrayList<Item> farmacias;
@@ -100,13 +103,16 @@ public class FarmaciaTurnoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view =inflater.inflate(R.layout.activity_farmacia, container, false);
+        View view =inflater.inflate(R.layout.fragment_farmacia, container, false);
+
+        farmacia_cercana = view.findViewById(R.id.mapa_farmacia);
+        farmacia_cercana.setOnClickListener(this);
 
         //inicializo el efecto de carga
         progressBarFarmacia = view.findViewById(R.id.progressBarFarmacia);
 
         //inicializo el editText donde ingresare texto para filtar por ciudad
-        EditText editText = view.findViewById(R.id.edittext);
+        EditText editText = view.findViewById(R.id.fragment_edittext);
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -123,7 +129,7 @@ public class FarmaciaTurnoFragment extends Fragment {
                 filter(s.toString());
             }
         });
-        lvlItems = view.findViewById(R.id.lvlItems);
+        fragment_lvlItems = view.findViewById(R.id.fragment_lvlItems);
         // Inflate the layout for this fragment
         return view;
     }
@@ -197,7 +203,7 @@ public class FarmaciaTurnoFragment extends Fragment {
                             }
                             adaptador = new Adaptador(getContext(),farmacias);
                             progressBarFarmacia.setVisibility(View.INVISIBLE);
-                            lvlItems.setAdapter(adaptador);
+                            fragment_lvlItems.setAdapter(adaptador);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -237,6 +243,16 @@ public class FarmaciaTurnoFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()) {
+            case R.id.mapa_farmacia:
+                Intent mapfarm = new Intent(getActivity(), MapaFarmacia.class);
+                startActivity(mapfarm);
+                break;
+        }
     }
 
     /**
