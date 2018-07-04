@@ -12,7 +12,7 @@ public class MainMayorActivity extends AppCompatActivity implements View.OnClick
     private Button cambiarj;
     private Button hvisita;
     private Button consultah;
-    private Button consultap;
+    private Button centrosalud;
     private Button farmaciat;
     private Button saludresp;
     private Button dsangre;
@@ -31,7 +31,7 @@ public class MainMayorActivity extends AppCompatActivity implements View.OnClick
         cambiarj = findViewById(R.id.cambiar_a_joven);
         hvisita = findViewById(R.id.hvisita);
         consultah = findViewById(R.id.consultah);
-        consultap = findViewById(R.id.consultap);
+        centrosalud = findViewById(R.id.centrosalud);
         farmaciat = findViewById(R.id.farmaciaturno);
         saludresp = findViewById(R.id.saludresp);
         dsangre = findViewById(R.id.dsangre);
@@ -40,7 +40,7 @@ public class MainMayorActivity extends AppCompatActivity implements View.OnClick
         cambiarj.setOnClickListener(this);
         hvisita.setOnClickListener(this);
         consultah.setOnClickListener(this);
-        consultap.setOnClickListener(this);
+        centrosalud.setOnClickListener(this);
         farmaciat.setOnClickListener(this);
         saludresp.setOnClickListener(this);
         dsangre.setOnClickListener(this);
@@ -68,9 +68,9 @@ public class MainMayorActivity extends AppCompatActivity implements View.OnClick
                 Intent consultah = new Intent(MainMayorActivity.this, CHoraActivity.class);
                 startActivity(consultah);
                 break;
-            case R.id.consultap:
-                Intent consultap = new Intent(MainMayorActivity.this, CEstadoActivity.class);
-                startActivity(consultap);
+            case R.id.centrosalud:
+                Intent centros = new Intent(MainMayorActivity.this, CentrosDeSalud.class);
+                startActivity(centros);
                 break;
             case R.id.farmaciaturno:
                 Intent farmaciat = new Intent(MainMayorActivity.this, FarmaciaActivity.class);

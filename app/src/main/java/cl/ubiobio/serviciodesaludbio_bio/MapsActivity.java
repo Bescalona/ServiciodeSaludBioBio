@@ -1,3 +1,7 @@
+/*INTEGRANTES
+-Ivan Martinez
+-Basthian Henriquez
+-Bastian Escalona*/
 package cl.ubiobio.serviciodesaludbio_bio;
 
 import android.Manifest;
@@ -8,11 +12,10 @@ import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -49,7 +52,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MapaFarmacia extends AppCompatActivity implements LocationSource, OnMapReadyCallback,
+public class MapsActivity extends AppCompatActivity implements LocationSource, OnMapReadyCallback,
         GoogleMap.OnMyLocationClickListener, GoogleMap.OnMapLongClickListener, GoogleMap.OnMarkerClickListener,
         GoogleMap.OnInfoWindowClickListener {
 
@@ -68,42 +71,14 @@ public class MapaFarmacia extends AppCompatActivity implements LocationSource, O
     private ArrayList<Farmacia> farmaciasDeTurno;
     private Farmacia farmaciaCercana;
 
-    private void busqueda(){
-
-        for(int i=0; i <farmaciasDeTurno.size();i++){
-            //esto es nuevo
-            distanciaFar = distancia(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude(),farmaciasDeTurno.get(i).getLatitud(), farmaciasDeTurno.get(i).getLongitud());
-            if(i==0){
-                menorDistanciaDefinitiva = distancia(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude(),farmaciasDeTurno.get(i).getLatitud(), farmaciasDeTurno.get(i).getLongitud());
-            }
-
-            if (distanciaFar < menorDistanciaDefinitiva) {
-                menorDistanciaDefinitiva = distancia(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude(),farmaciasDeTurno.get(i).getLatitud(), farmaciasDeTurno.get(i).getLongitud());
-                farmaciaCercana = farmaciasDeTurno.get(i); //datos farmacia mas cercana
-
-            }
-        }
-
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mapa_farmacia);
+        setContentView(R.layout.activity_maps);
         farmaciasDeTurno = new ArrayList<>();
         serviceFarmacias();
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()){
-                    case R.id.fab:
-                        busqueda();
-                        break;
-                }
-            }
-        });
+
         /** mLocationManager gestiona las peticiones de posicion **/
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -124,6 +99,43 @@ public class MapaFarmacia extends AppCompatActivity implements LocationSource, O
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()){
+                    case R.id.fab:
+                        for(int i=0; i <farmaciasDeTurno.size();i++){
+                            //esto es nuevo
+                            distanciaFar = distancia(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude(),farmaciasDeTurno.get(i).getLatitud(), farmaciasDeTurno.get(i).getLongitud());
+                            if(i==0){
+                                menorDistanciaDefinitiva = distancia(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude(),farmaciasDeTurno.get(i).getLatitud(), farmaciasDeTurno.get(i).getLongitud());
+                            }
+
+                            if (distanciaFar < menorDistanciaDefinitiva) {
+                                menorDistanciaDefinitiva = distancia(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude(),farmaciasDeTurno.get(i).getLatitud(), farmaciasDeTurno.get(i).getLongitud());
+                                farmaciaCercana = farmaciasDeTurno.get(i); //datos farmacia mas cercana
+
+                            }
+                        }
+                        LatLng desti = new LatLng(farmaciaCercana.getLatitud(), farmaciaCercana.getLongitud());
+
+                        /** en este caso, capturamos la posicion del marcador y la posicion actual del telefono
+                         * e iniciamos el proceso de trazar una ruta **/
+                        LatLng origen = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
+                        String url = obtenerDireccionesURL(origen,desti); //funcion para generar la URL para solicitar la ruta
+
+                        /** Tarea Async para descargar la ruta **/
+                        DownloadTask downloadTask = new DownloadTask();
+                        downloadTask.execute(url);
+
+                        mMap.addMarker(new MarkerOptions().position(desti).title(farmaciaCercana.getNombre_farmacia()));
+
+                        break;
+                }
+            }
+        });
 
 
 
@@ -218,7 +230,7 @@ public class MapaFarmacia extends AppCompatActivity implements LocationSource, O
                     /** cuando se captura una nueva posicion, se le entrega al evento que fue seteado en el mapa
                      * para que sea consiente se su posicion.
                      * En caso de necesitar tracking de posicion, en este punto se debe el iniciar el SW de trackeo **/
-                    MapaFarmacia.this.listener.onLocationChanged(location);
+                    MapsActivity.this.listener.onLocationChanged(location);
                 }
 
                 @Override
@@ -308,6 +320,9 @@ public class MapaFarmacia extends AppCompatActivity implements LocationSource, O
                             for(int i = 0; i < responseJson.length(); i++){
                                 JSONObject o = responseJson.getJSONObject(i);
                                 Farmacia far = new Farmacia();
+
+                                Log.d("Region: ", o.getString("local_nombre"));
+                                Log.d("Comuna: ", o.getString("comuna_nombre"));
 
                                 far.setFecha(o.getString("fecha"));
                                 far.setLocal_id(o.getString("local_id"));

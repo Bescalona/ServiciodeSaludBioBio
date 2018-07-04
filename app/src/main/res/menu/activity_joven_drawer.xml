@@ -13,9 +13,9 @@
             android:icon="@drawable/svg_consulta_hora"
             android:title="Consulta hora médica" />
         <item
-            android:id="@+id/nav_paciente"
-            android:icon="@drawable/svg_paciente"
-            android:title="Consulta estado del paciente" />
+            android:id="@+id/nav_centrossalud"
+            android:icon="@drawable/svg_hospital"
+            android:title="Centros de salud" />
         <item
             android:id="@+id/nav_donacion"
             android:icon="@drawable/svg_donacion_de_sangre"

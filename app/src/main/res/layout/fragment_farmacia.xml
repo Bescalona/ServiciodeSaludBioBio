@@ -5,22 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
     tools:context="cl.ubiobio.serviciodesaludbio_bio.FarmaciaTurnoFragment">
 
-    <Button
-        android:id="@+id/mapa_farmacia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Farmacia más cercana"
-        android:textColor="#FFFFFF"
-        android:background="#0167B1"
-        android:layout_marginTop="7dp"
-        />
-
     <LinearLayout
-        android:layout_below="@+id/mapa_farmacia"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">

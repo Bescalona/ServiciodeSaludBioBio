@@ -1,6 +1,6 @@
 package cl.ubiobio.serviciodesaludbio_bio;
 
-/*Fragment asociado al layout activity_cestado, su funcion es ser llamado en el MainJovenActivity para luego mostrar su layout en la pantalla
+/*Fragment asociado al layout activity_centros, su funcion es ser llamado en el MainJovenActivity para luego mostrar su layout en la pantalla
   principal del modo joven (content_joven)*/
 import android.content.Context;
 import android.net.Uri;
@@ -9,17 +9,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ConsultaEstadoFragment.OnFragmentInteractionListener} interface
+ * {@link CentrosDeSaludFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ConsultaEstadoFragment#newInstance} factory method to
+ * Use the {@link CentrosDeSaludFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ConsultaEstadoFragment extends Fragment {
+public class CentrosDeSaludFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -31,7 +30,7 @@ public class ConsultaEstadoFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public ConsultaEstadoFragment() {
+    public CentrosDeSaludFragment() {
         // Required empty public constructor
     }
 
@@ -41,11 +40,11 @@ public class ConsultaEstadoFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ConsultaEstadoFragment.
+     * @return A new instance of fragment CentrosDeSaludFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ConsultaEstadoFragment newInstance(String param1, String param2) {
-        ConsultaEstadoFragment fragment = new ConsultaEstadoFragment();
+    public static CentrosDeSaludFragment newInstance(String param1, String param2) {
+        CentrosDeSaludFragment fragment = new CentrosDeSaludFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -66,7 +65,7 @@ public class ConsultaEstadoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_cestado, container, false);
+        return inflater.inflate(R.layout.activity_centros, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

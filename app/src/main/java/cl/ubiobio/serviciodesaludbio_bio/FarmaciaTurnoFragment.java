@@ -41,8 +41,7 @@ import java.util.ArrayList;
  * Use the {@link FarmaciaTurnoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FarmaciaTurnoFragment extends Fragment implements View.OnClickListener {
-    private Button farmacia_cercana;
+public class FarmaciaTurnoFragment extends Fragment{
     private ProgressBar progressBarFarmacia;
     private ListView fragment_lvlItems;
     private Adaptador adaptador;
@@ -104,9 +103,6 @@ public class FarmaciaTurnoFragment extends Fragment implements View.OnClickListe
                              Bundle savedInstanceState) {
 
         View view =inflater.inflate(R.layout.fragment_farmacia, container, false);
-
-        farmacia_cercana = view.findViewById(R.id.mapa_farmacia);
-        farmacia_cercana.setOnClickListener(this);
 
         //inicializo el efecto de carga
         progressBarFarmacia = view.findViewById(R.id.progressBarFarmacia);
@@ -243,16 +239,6 @@ public class FarmaciaTurnoFragment extends Fragment implements View.OnClickListe
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch(v.getId()) {
-            case R.id.mapa_farmacia:
-                Intent mapfarm = new Intent(getActivity(), MapaFarmacia.class);
-                startActivity(mapfarm);
-                break;
-        }
     }
 
     /**

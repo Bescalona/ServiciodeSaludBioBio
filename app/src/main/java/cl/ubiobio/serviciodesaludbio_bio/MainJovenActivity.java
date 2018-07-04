@@ -5,9 +5,6 @@ import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,7 +16,7 @@ import android.view.MenuItem;
 
 public class MainJovenActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HoraVisitaFragment.OnFragmentInteractionListener,
-        CarteraServicioFragment.OnFragmentInteractionListener, ConsultaEstadoFragment.OnFragmentInteractionListener,
+        CarteraServicioFragment.OnFragmentInteractionListener, CentrosDeSaludFragment.OnFragmentInteractionListener,
         ConsultaHoraMedFragment.OnFragmentInteractionListener, DonaSangreFragment.OnFragmentInteractionListener,
         FarmaciaTurnoFragment.OnFragmentInteractionListener, SaludRespondeFragment.OnFragmentInteractionListener,
         QSomosFragment.OnFragmentInteractionListener{
@@ -107,8 +104,8 @@ public class MainJovenActivity extends AppCompatActivity
             miFragment = new ConsultaHoraMedFragment();
             fragmentSeleccionado = true;
             getSupportActionBar().setTitle("Consulta hora médica");
-        } else if (id == R.id.nav_paciente) {
-            miFragment = new ConsultaEstadoFragment();
+        } else if (id == R.id.nav_centrossalud) {
+            miFragment = new CentrosDeSaludFragment();
             fragmentSeleccionado = true;
             getSupportActionBar().setTitle("Consulta estado del paciente");
         } else if (id == R.id.nav_donacion) {

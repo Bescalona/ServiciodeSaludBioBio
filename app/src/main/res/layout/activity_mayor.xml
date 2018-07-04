@@ -44,6 +44,7 @@
         android:paddingRight="10dp"
         android:paddingBottom="10dp">
 
+
         <Button
             android:id="@+id/consultah"
             android:layout_width="match_parent"
@@ -51,14 +52,23 @@
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:background="@drawable/consulta_hora"/>
-
-        <Button
-            android:id="@+id/consultap"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:background="@drawable/consulta_paciente"/>
+            android:layout_marginLeft="5dp"
+            android:background="@color/White"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/centrosalud"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/centro_salud"/>
+
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
