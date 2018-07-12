@@ -46,11 +46,11 @@
         <activity android:name=".HVisitaActivity" />
         <activity android:name=".CHoraActivity" />
         <activity android:name=".DSangreActivity" />
-        <activity android:name=".CentrosDeSalud" />
         <activity android:name=".CServiciosActivity" />
         <activity android:name=".FarmaciaActivity" />
         <activity android:name=".SaludRespondeActivity" />
         <activity android:name=".SinSaldoActivity" />
+        <activity android:name=".CentrosDeSalud" />
 
 
 

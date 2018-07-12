@@ -107,7 +107,7 @@ public class MainJovenActivity extends AppCompatActivity
         } else if (id == R.id.nav_centrossalud) {
             miFragment = new CentrosDeSaludFragment();
             fragmentSeleccionado = true;
-            getSupportActionBar().setTitle("Consulta estado del paciente");
+            getSupportActionBar().setTitle("Centros de salud");
         } else if (id == R.id.nav_donacion) {
             miFragment = new DonaSangreFragment();
             fragmentSeleccionado = true;
