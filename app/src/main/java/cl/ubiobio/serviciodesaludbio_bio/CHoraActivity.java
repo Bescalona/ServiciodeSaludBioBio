@@ -191,6 +191,7 @@ public class CHoraActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("LOG WS", error.toString());
+                generateToast("Error en el WEB Service");
             }
         }
         ){

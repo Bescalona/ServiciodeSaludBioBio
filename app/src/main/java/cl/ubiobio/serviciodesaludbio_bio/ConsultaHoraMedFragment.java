@@ -280,6 +280,7 @@ public class ConsultaHoraMedFragment extends Fragment implements View.OnClickLis
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("LOG WS", error.toString());
+                generateToast("Error en el WEB Service");
             }
         }
         ){

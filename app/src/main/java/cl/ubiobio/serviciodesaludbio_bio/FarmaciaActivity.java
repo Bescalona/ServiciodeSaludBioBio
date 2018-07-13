@@ -147,6 +147,7 @@ public class FarmaciaActivity extends AppCompatActivity {
                             progressBarFarmacia.setVisibility(View.INVISIBLE);
                             lvlItems.setAdapter(adaptador);
 
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
